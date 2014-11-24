@@ -1,6 +1,6 @@
-use std::fmt::{Show, Formatter, Error};
+//use std::fmt::{ Show, Formatter, Error };
 
-use date::Date;
+use data::date::Date;
 //use api::clean_text;
 
 #[deriving(Encodable, Decodable, Show)]

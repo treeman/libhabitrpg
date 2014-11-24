@@ -1,4 +1,4 @@
-use time::;
+use time;
 
 #[deriving(Show, Encodable, Decodable)]
 pub struct Repeat  {

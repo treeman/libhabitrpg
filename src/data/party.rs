@@ -1,15 +1,15 @@
-use api::quest::*;
+//use api::quest::*;
 
 // TODO should parse from other place?
 #[deriving(Show, Encodable, Decodable)]
-pub struct Party {
+pub struct Party;// {
     // ordering
-    pub quest: Quest, // TODO should be optional!
+    //pub quest: Quest, // TODO should be optional!
     // leader
     // memberCount
     // members
     // name
-}
+//}
 
 //#[deriving(Show, Encodable, Decodable)]
 //pub struct PartyMember {

@@ -1,15 +1,16 @@
-use serialize::{ Encodable, Decoder, Decodable, Encoder, json };
-use std::io::{ File, Open, Read };
+use serialize::{ Encodable, Decoder, Encoder };
 
-use date::Date;
-use achievements::Achievements;
-use habit::Habit;
-use daily::Daily;
-use todo::Todo;
-use reward::Reward;
-use stats::Stats;
-use tag::Tag;
-use id::Id;
+use data::date::Date;
+use data::achievements::Achievements;
+use data::habit::Habit;
+use data::daily::Daily;
+use data::todo::Todo;
+use data::reward::Reward;
+use data::stats::Stats;
+use data::tag::Tag;
+//use data::id::Id;
+
+use json_helpers;
 
 #[deriving(Show, Encodable, Decodable)]
 pub struct Items {
@@ -41,7 +42,7 @@ pub struct User {
     //pub items: Items,
     pub lastCron: Date,
     // newMessages ?
-    //pub party: Party, // TODO this fails now without a quest?
+    // pub party: Party, // Parsed from other place
     // preferences
     // profile (name...)
     pub profile: Profile,
@@ -51,27 +52,7 @@ pub struct User {
 
 impl User {
     pub fn from_file(loc: &str) -> User {
-        let path = Path::new(loc);
-        let mut file = match File::open_mode(&path, Open, Read) {
-            Ok(f) => f,
-            Err(e) => panic!("file error: {}", e)
-        };
-
-        let contents: String = match file.read_to_string() {
-            Ok(f) => f,
-            Err(e) => panic!("file error: {}", e)
-        };
-
-        let json_object = match json::from_str(contents[]) {
-            Ok(v) => v,
-            Err(e) => panic!("json parse error: {}", e)
-        };
-        let mut decoder = json::Decoder::new(json_object);
-
-        match Decodable::decode(&mut decoder) {
-            Ok(v) => v,
-            Err(e) => panic!("Decoding error: {}", e)
-        }
+        json_helpers::from_file(loc)
     }
 
     pub fn print_char(&self) {
@@ -113,12 +94,18 @@ impl User {
         println!("  {} dailys", self.dailys.len());
         println!("  {} todos", self.unfinished_todos().len());
     }
+
+    pub fn print(&self) {
+        self.print_char();
+        self.print_char_stats();
+        self.print_task_stats();
+    }
 }
 
 #[test]
 fn tst() {
     let user = User::from_file("data/user.json");
-    println!("{}", user);
+    user.print();
     assert!(false);
 }
 

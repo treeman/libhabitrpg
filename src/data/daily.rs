@@ -1,7 +1,7 @@
 use std::fmt::{ Show, Formatter, Error };
 
-use date::Date;
-use repeat::Repeat;
+use data::date::Date;
+use data::repeat::Repeat;
 
 #[deriving(Encodable, Decodable)]
 pub struct Daily {

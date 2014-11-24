@@ -1,4 +1,4 @@
-use date::Date;
+use data::date::Date;
 
 #[deriving(Show, Encodable, Decodable)]
 pub struct Habit {
