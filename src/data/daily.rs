@@ -2,6 +2,7 @@ use std::fmt::{ Show, Formatter, Error };
 
 use data::date::Date;
 use data::repeat::Repeat;
+use data::print;
 
 #[deriving(Encodable, Decodable)]
 pub struct Daily {
@@ -28,8 +29,7 @@ impl Daily {
 
 impl Show for Daily {
     fn fmt(&self, f: &mut Formatter) -> Result<(), Error> {
-        //let s = format!("{} ", clean_text(self.text.as_slice()));
-        write!(f, "{}", self.text.as_slice())
+        write!(f, "{}", print::remove_emoji(self.text[]))
     }
 }
 

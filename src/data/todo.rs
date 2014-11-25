@@ -1,9 +1,9 @@
-//use std::fmt::{ Show, Formatter, Error };
+use std::fmt::{ Show, Formatter, Error };
 
 use data::date::Date;
-//use api::clean_text;
+use data::print;
 
-#[deriving(Encodable, Decodable, Show)]
+#[deriving(Encodable, Decodable)]
 pub struct Todo {
     pub text: String,
     //attribute: String, // "str" wut?
@@ -20,12 +20,13 @@ pub struct Todo {
     // challenge?
 }
 
-//impl Show for Todo {
-    //fn fmt(&self, f: &mut Formatter) -> Result<(), FormatError> {
-        //let mut s = format!("{:s} ", clean_text(self.text.as_slice()));
-        //if self.completed {
-            //s = s.append("(Done)");
-        //};
-        //write!(f, "{:s}", s)
-    //}
-//}
+impl Show for Todo {
+    fn fmt(&self, f: &mut Formatter) -> Result<(), Error> {
+        let mut s = print::remove_emoji(self.text[]).to_string();
+        if self.completed {
+            s.push_str("(Done)");
+        };
+        write!(f, "{}", s)
+    }
+}
+
