@@ -3,20 +3,8 @@ use http::method::Get;
 use url::Url;
 
 use id::Id;
-use json_helpers;
-use data::{ User, Party };
 
 /// TODO error handling!
-
-pub fn get_user(id: &Id) -> User {
-    let response = get("https://beta.habitrpg.com/api/v2/user", id);
-    json_helpers::from_str(response[])
-}
-
-pub fn get_party(id: &Id) -> Party {
-    let response = get("https://beta.habitrpg.com/api/v2/user", id);
-    json_helpers::from_str(response[])
-}
 
 /// A GET request with authentication headers attached.
 pub fn get(url: &str, id: &Id) -> String {

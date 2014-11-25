@@ -1,22 +1,10 @@
 use std::fmt::{ Show, Formatter, Result };
 
-use json_helpers;
-
 // API_TOKEN and USER_ID for habitrpg identifiers.
 #[deriving(Decodable, Eq, PartialEq)]
 pub struct Id  {
     pub api_token: String,
     pub user_id: String,
-}
-
-impl Id {
-    pub fn from_file(loc: &str) -> Id {
-        json_helpers::from_file(loc)
-    }
-
-    pub fn from_str(loc: &str) -> Id {
-        json_helpers::from_str(loc)
-    }
 }
 
 impl Show for Id {

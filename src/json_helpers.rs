@@ -3,7 +3,11 @@ use std::io::{ File, Open, Read };
 
 pub fn from_file<D: Decodable<json::Decoder, json::DecoderError>>(loc: &str) -> D {
     let path = Path::new(loc);
-    let mut file = match File::open_mode(&path, Open, Read) {
+    from_path(&path)
+}
+
+pub fn from_path<D: Decodable<json::Decoder, json::DecoderError>>(path: &Path) -> D {
+    let mut file = match File::open_mode(path, Open, Read) {
         Ok(f) => f,
         Err(e) => panic!("file error: {}", e)
     };
@@ -28,3 +32,4 @@ pub fn from_str<D: Decodable<json::Decoder, json::DecoderError>>(s: &str) -> D {
         Err(e) => panic!("Decoding error: {}", e)
     }
 }
+
