@@ -25,6 +25,8 @@ mod json_helpers;
 mod id;
 mod request;
 
+// TODO error handling!!
+
 pub fn get_user_response(id: &Id) -> String {
     get("https://beta.habitrpg.com/api/v2/user", id)
 }
