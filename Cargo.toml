@@ -8,3 +8,7 @@ authors = ["Jonas Hietala <mail@jonashietala.se>"]
 
 git = "https://github.com/rust-lang/time"
 
+[dependencies.http]
+
+git = "https://github.com/chris-morgan/rust-http.git"
+

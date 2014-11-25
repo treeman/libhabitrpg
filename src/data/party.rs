@@ -1,5 +1,3 @@
-use json_helpers;
-
 use data::{
     Quest,
     Achievements,
@@ -25,12 +23,6 @@ pub struct Party {
     pub name: String,
 }
 
-impl Party {
-    pub fn from_file(loc: &str) -> Party {
-        json_helpers::from_file(loc)
-    }
-}
-
 #[deriving(Show, Encodable, Decodable)]
 pub struct PartyMember {
     //
@@ -50,18 +42,3 @@ pub struct PartyMember {
     //        loggedin
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn go() {
-        let party = Party::from_file("data/party.json");
-
-        //println!("{}", party);
-        for x in party.members.iter() {
-            println!("{}", x.items);
-        }
-        assert!(false);
-    }
-}

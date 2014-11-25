@@ -13,7 +13,11 @@ pub fn from_file<D: Decodable<json::Decoder, json::DecoderError>>(loc: &str) -> 
         Err(e) => panic!("file error: {}", e)
     };
 
-    let json_object = match json::from_str(contents[]) {
+    from_str(contents[])
+}
+
+pub fn from_str<D: Decodable<json::Decoder, json::DecoderError>>(s: &str) -> D {
+    let json_object = match json::from_str(s[]) {
         Ok(v) => v,
         Err(e) => panic!("json parse error: {}", e)
     };

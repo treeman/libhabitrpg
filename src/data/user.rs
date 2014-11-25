@@ -13,8 +13,6 @@ use data::{
     Profile,
 };
 
-use json_helpers;
-
 // TODO custom Show
 #[deriving(Show, Encodable, Decodable)]
 pub struct User {
@@ -43,10 +41,6 @@ pub struct User {
 }
 
 impl User {
-    pub fn from_file(loc: &str) -> User {
-        json_helpers::from_file(loc)
-    }
-
     pub fn print_char(&self) {
         println!("{}, level {} {}", self.profile.name, self.stats.lvl, self.stats.class)
     }
@@ -92,11 +86,5 @@ impl User {
         self.print_char_stats();
         self.print_task_stats();
     }
-}
-
-#[test]
-fn tst() {
-    let user = User::from_file("data/user.json");
-    user.print();
 }
 
