@@ -23,10 +23,10 @@ pub struct Stats {
     pub gp: f32,
     pub hp: uint,
     pub mp: uint,
-    pub maxHealth: uint,
-    pub maxMP: uint,
+    pub maxHealth: Option<uint>,
+    pub maxMP: Option<uint>,
     pub lvl: uint,
     pub points: uint, // ??
-    pub toNextLevel: f32, // uint?
+    pub toNextLevel: Option<f32>, // uint?
     // training ?
 }

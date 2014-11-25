@@ -12,6 +12,10 @@ pub use data::user::User;
 pub use data::repeat::Repeat;
 pub use data::id::Id;
 pub use data::party::Party;
+pub use data::quest::Quest;
+pub use data::items::Items;
+pub use data::profile::Profile;
+pub use data::gear::Gear;
 
 mod date;
 mod achievements;
@@ -25,4 +29,7 @@ mod stats;
 mod id;
 mod user;
 mod party;
-
+mod quest;
+mod items;
+mod profile;
+mod gear;

@@ -1,27 +1,19 @@
 use serialize::{ Encodable, Decoder, Encoder };
 
-use data::date::Date;
-use data::achievements::Achievements;
-use data::habit::Habit;
-use data::daily::Daily;
-use data::todo::Todo;
-use data::reward::Reward;
-use data::stats::Stats;
-use data::tag::Tag;
-//use data::id::Id;
+use data::{
+    Date,
+    Achievements,
+    Habit,
+    Daily,
+    Todo,
+    Reward,
+    Stats,
+    Tag,
+    Items,
+    Profile,
+};
 
 use json_helpers;
-
-#[deriving(Show, Encodable, Decodable)]
-pub struct Items {
-    pub currentMount: String,
-    pub currentPet: String,
-}
-
-#[deriving(Show, Encodable, Decodable)]
-pub struct Profile {
-    pub name: String,
-}
 
 // TODO custom Show
 #[deriving(Show, Encodable, Decodable)]
@@ -39,7 +31,7 @@ pub struct User {
     // history exp/todo
     pub id: String,
     // invitations
-    //pub items: Items,
+    pub items: Items,
     pub lastCron: Date,
     // newMessages ?
     // pub party: Party, // Parsed from other place
@@ -106,6 +98,5 @@ impl User {
 fn tst() {
     let user = User::from_file("data/user.json");
     user.print();
-    assert!(false);
 }
 
