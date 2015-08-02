@@ -3,7 +3,6 @@
 
 #![feature(plugin)]
 #![plugin(regex_macros)]
-//extern crate regex_macros;
 extern crate regex;
 
 extern crate rustc_serialize;

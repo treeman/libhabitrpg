@@ -14,7 +14,6 @@ pub fn from_path<D: Decodable>(path: &Path) -> D {
         Err(e) => panic!("file error: {}", e)
     };
 
-    println!("{}: {:?}", path.display(), file);
     let mut contents = String::new();
     match file.read_to_string(&mut contents) {
         Ok(_) => {},
@@ -33,7 +32,9 @@ pub fn from_str<D: Decodable>(s: &str) -> D {
 
     match Decodable::decode(&mut decoder) {
         Ok(v) => v,
-        Err(e) => panic!("Decoding error: {}", e)
+        Err(e) => {
+            panic!("Decoding error: {}", e)
+        }
     }
 }
 
