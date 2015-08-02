@@ -1,6 +1,6 @@
 use data::date::Date;
 
-#[deriving(Show, Encodable, Decodable)]
+#[derive(Debug, RustcEncodable, RustcDecodable)]
 pub struct Reward {
     text: String,
     //attribute: String, // "str" wut?

@@ -1,17 +1,15 @@
-#![feature(macro_rules)]
-#![feature(phase)]
 #![allow(non_snake_case)]
 #![allow(dead_code)]
-#![feature(globs)]
-#![feature(slicing_syntax)]
 
-#[phase(plugin)]
-extern crate regex_macros;
+#![feature(plugin)]
+#![plugin(regex_macros)]
+//extern crate regex_macros;
 extern crate regex;
 
-extern crate serialize;
+extern crate rustc_serialize;
 extern crate time;
-extern crate http;
+#[macro_use]
+extern crate hyper;
 extern crate url;
 
 pub use id::Id;
@@ -36,11 +34,11 @@ pub fn get_party_response(id: &Id) -> String {
 }
 
 pub fn get_user(id: &Id) -> User {
-    json_helpers::from_str(get_user_response(id)[])
+    json_helpers::from_str(&get_user_response(id))
 }
 
 pub fn get_party(id: &Id) -> Party {
-    json_helpers::from_str(get_party_response(id)[])
+    json_helpers::from_str(&get_party_response(id))
 }
 
 pub fn load_user(file: &str) -> User {

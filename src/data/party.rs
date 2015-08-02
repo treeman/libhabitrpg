@@ -7,7 +7,7 @@ use data::{
 };
 
 // TODO should parse from other place?
-#[deriving(Show, Encodable, Decodable)]
+#[derive(Debug, RustcEncodable, RustcDecodable)]
 pub struct Party {
     // chat
     //    id
@@ -18,12 +18,12 @@ pub struct Party {
     // ordering
     pub quest: Quest, // TODO should be optional!
     // leader
-    pub memberCount: uint,
+    pub memberCount: usize,
     pub members: Vec<PartyMember>,
     pub name: String,
 }
 
-#[deriving(Show, Encodable, Decodable)]
+#[derive(Debug, RustcEncodable, RustcDecodable)]
 pub struct PartyMember {
     //
     achievements: Achievements,

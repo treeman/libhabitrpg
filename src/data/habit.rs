@@ -1,9 +1,9 @@
-use std::fmt::{ Show, Formatter, Error };
+use std::fmt::{ Display, Formatter, Error };
 
 use data::date::Date;
 use data::print;
 
-#[deriving(Encodable, Decodable)]
+#[derive(Debug, RustcEncodable, RustcDecodable)]
 pub struct Habit {
     pub text: String,
     //attribute: String, // "str" wut?
@@ -17,9 +17,9 @@ pub struct Habit {
     //history: Vec<String>, // TODO
 }
 
-impl Show for Habit {
+impl Display for Habit {
     fn fmt(&self, f: &mut Formatter) -> Result<(), Error> {
-        write!(f, "{}", print::remove_emoji(self.text[]))
+        write!(f, "{}", print::remove_emoji(&self.text))
     }
 }
 

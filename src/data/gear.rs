@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-#[deriving(Show, Encodable, Decodable)]
+#[derive(Debug, RustcEncodable, RustcDecodable)]
 pub struct Gear {
     costume: HashMap<String, String>,
     equipped: HashMap<String, String>,

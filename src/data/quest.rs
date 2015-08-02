@@ -1,6 +1,6 @@
 
 // TODO fix
-#[deriving(Show, Encodable, Decodable)]
+#[derive(Debug, RustcEncodable, RustcDecodable)]
 pub struct Quest {
     pub active: bool,
     // completed: May be null, or a completed quest eg "gryphon"
@@ -8,7 +8,7 @@ pub struct Quest {
     pub progress: QuestProgress,
 }
 
-#[deriving(Show, Encodable, Decodable)]
+#[derive(Debug, RustcEncodable, RustcDecodable)]
 pub struct QuestProgress {
     // collect
     pub hp: f32,

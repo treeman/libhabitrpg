@@ -1,14 +1,14 @@
 # About
 
-A simple third-party API for retreiving information from [habitrpg][].
+A simple third-party API for retreiving information from [habitrpg][]. Just a simple lib.
 
 [habitrpg]: https://habitrpg.com/
 
 # Todo
 
 * Error handling with GET requests
-
-* Status
-* Content
-* ... Many more
-
+* More data
+    * Status
+    * Content
+    * ... Many more
+* Implementation of Display for data

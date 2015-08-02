@@ -1,9 +1,9 @@
-use std::fmt::{ Show, Formatter, Error };
+use std::fmt::{ Debug, Formatter, Error };
 
 use data::date::Date;
 use data::print;
 
-#[deriving(Encodable, Decodable)]
+#[derive(RustcEncodable, RustcDecodable)]
 pub struct Todo {
     pub text: String,
     //attribute: String, // "str" wut?
@@ -20,9 +20,9 @@ pub struct Todo {
     // challenge?
 }
 
-impl Show for Todo {
+impl Debug for Todo {
     fn fmt(&self, f: &mut Formatter) -> Result<(), Error> {
-        let mut s = print::remove_emoji(self.text[]).to_string();
+        let mut s = print::remove_emoji(&self.text).to_string();
         if self.completed {
             s.push_str("(Done)");
         };

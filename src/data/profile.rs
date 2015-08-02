@@ -1,4 +1,4 @@
-#[deriving(Show, Encodable, Decodable)]
+#[derive(Debug, RustcEncodable, RustcDecodable)]
 pub struct Profile {
     pub name: String,
 }

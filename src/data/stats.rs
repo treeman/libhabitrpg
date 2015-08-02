@@ -1,32 +1,32 @@
 
 //#[deriving(Show, Encodable, Decodable)]
 //pub struct Buffs {
-    //constitution: uint,
-    //intelligence: uint,
-    //perception: uint,
-    //strength: uint,
-    //stealth: uint,
+    //constitution: usize,
+    //intelligence: usize,
+    //perception: usize,
+    //strength: usize,
+    //stealth: usize,
     //// snowball: bool ?
     //// streaks: bool ?
 //}
 
 // TODO custom Show
-#[deriving(Show, Encodable, Decodable)]
+#[derive(Debug, RustcEncodable, RustcDecodable)]
 pub struct Stats {
     //buffs: Buffs,
     pub class: String, // Or class...
-    pub con: uint,
-    pub int: uint,
-    pub per: uint,
-    pub str: uint,
+    pub con: usize,
+    pub int: usize,
+    pub per: usize,
+    pub str: usize,
     pub exp: f32,
     pub gp: f32,
-    pub hp: uint,
-    pub mp: uint,
-    pub maxHealth: Option<uint>,
-    pub maxMP: Option<uint>,
-    pub lvl: uint,
-    pub points: uint, // ??
-    pub toNextLevel: Option<f32>, // uint?
+    pub hp: usize,
+    pub mp: usize,
+    pub maxHealth: Option<usize>,
+    pub maxMP: Option<usize>,
+    pub lvl: usize,
+    pub points: usize, // ??
+    pub toNextLevel: Option<f32>, // usize?
     // training ?
 }

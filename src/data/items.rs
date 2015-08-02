@@ -3,23 +3,23 @@ use std::collections::HashMap;
 use data::Gear;
 use data::Date;
 
-#[deriving(Show, Encodable, Decodable)]
+#[derive(Debug, RustcEncodable, RustcDecodable)]
 pub struct LastDrop {
-    count: uint,
+    count: usize,
     date: Date,
 }
 
-#[deriving(Show, Encodable, Decodable)]
+#[derive(Debug, RustcEncodable, RustcDecodable)]
 pub struct Items {
     currentMount: Option<String>, // Sometimes "" ??
     currentPet: Option<String>,
-    eggs: HashMap<String, uint>,
-    food: HashMap<String, uint>,
+    eggs: HashMap<String, usize>,
+    food: HashMap<String, usize>,
     gear: Gear,
     lastDrop: LastDrop,
-    hatchingPotions: HashMap<String, uint>,
+    hatchingPotions: HashMap<String, usize>,
     mounts: HashMap<String, bool>,
-    pets: HashMap<String, int>,
-    quests: HashMap<String, int>,
+    pets: HashMap<String, isize>,
+    quests: HashMap<String, isize>,
 }
 

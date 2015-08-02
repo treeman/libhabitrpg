@@ -1,4 +1,4 @@
-use serialize::{ Encodable, Decoder, Encoder };
+use rustc_serialize::{ Encodable, Decoder, Encoder };
 
 use data::{
     Date,
@@ -14,7 +14,7 @@ use data::{
 };
 
 // TODO custom Show
-#[deriving(Show, Encodable, Decodable)]
+#[derive(Debug, RustcEncodable, RustcDecodable)]
 pub struct User {
     pub achievements: Achievements,
 
@@ -46,21 +46,21 @@ impl User {
     }
 
     pub fn print_char_stats(&self) {
-        println!("  {}/{} hp", self.stats.hp, self.stats.maxHealth);
-        println!("  {}/{} mp", self.stats.mp, self.stats.maxMP);
-        println!("  {}/{} xp", self.stats.exp, self.stats.toNextLevel);
+        println!("  {}/{:?} hp", self.stats.hp, self.stats.maxHealth);
+        println!("  {:?}/{:?} mp", self.stats.mp, self.stats.maxMP);
+        println!("  {}/{:?} xp", self.stats.exp, self.stats.toNextLevel);
     }
 
     // Filter out separators, starting with #, which I use as delimiters in habitrpg website.
     pub fn dailys<'a>(&'a self) -> Vec<&'a Daily> {
         self.dailys.iter().filter(|t: &&Daily| {
-            !t.text.as_slice().starts_with("#")
+            !&t.text.starts_with("#")
         }).collect()
     }
 
     pub fn habits<'a>(&'a self) -> Vec<&'a Habit> {
         self.habits.iter().filter(|t: &&Habit| {
-            !t.text.as_slice().starts_with("#")
+            !&t.text.starts_with("#")
         }).collect()
     }
 

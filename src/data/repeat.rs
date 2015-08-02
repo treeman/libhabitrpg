@@ -1,6 +1,6 @@
 use time;
 
-#[deriving(Show, Encodable, Decodable)]
+#[derive(Debug, RustcEncodable, RustcDecodable)]
 pub struct Repeat  {
     pub su: bool,
     pub m: bool,
